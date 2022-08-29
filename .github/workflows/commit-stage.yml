@@ -48,7 +48,7 @@ jobs:
           mkdir postgresql
           sudo mv init.sql /postgresql
       - name: Build  docker-compose
-        run: docker-compose up -d polar-postgresql
+        run: docker-compose up -d polar-postgres
       - name: Build, unit tests and integration tests
         run: |
           chmod +x gradlew
