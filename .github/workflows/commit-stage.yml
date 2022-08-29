@@ -35,6 +35,20 @@ jobs:
         if: success() || failure()
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
+      - name: curl docker compose file
+        uses: wei/curl@master
+        with:
+          args: https://github.com/cboschmans-code/polar-deployment/blob/main/docker/docker-compose.yml
+      - name: curl init script
+        uses: wei/curl@master
+        with:
+          args: https://github.com/cboschmans-code/polar-deployment/blob/main/docker/postgresql/init.sql
+      - name: move script
+        run: |
+          mkdir postgresql
+          mv init.sql /postgresql
+      - name: Build  docker-compose
+        run: docker-compose up -d polar-postgresql
       - name: Build, unit tests and integration tests
         run: |
           chmod +x gradlew
