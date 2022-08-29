@@ -38,11 +38,11 @@ jobs:
       - name: curl docker compose file
         uses: wei/curl@master
         with:
-          args: https://raw.githubusercontent.com/cboschmans-code/polar-deployment/main/docker/docker-compose.yml
+          args: https://raw.githubusercontent.com/cboschmans-code/polar-deployment/main/docker/docker-compose.yml --output docker-compose.yml
       - name: curl init script
         uses: wei/curl@master
         with:
-          args: https://raw.githubusercontent.com/cboschmans-code/polar-deployment/main/docker/postgresql/init.sql
+          args: https://raw.githubusercontent.com/cboschmans-code/polar-deployment/main/docker/postgresql/init.sql --output init.sql
       - name: move script
         run: |
           mkdir postgresql
