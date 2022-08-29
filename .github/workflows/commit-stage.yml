@@ -43,11 +43,12 @@ jobs:
         uses: wei/curl@master
         with:
           args: https://raw.githubusercontent.com/cboschmans-code/polar-deployment/main/docker/postgresql/init.sql --output init.sql
+      - name: make directory
+        run:  mkdir postgresql
       - name: move script
-        run: |
-          mkdir postgresql
-          sudo mv init.sql /postgresql
-          echo $(ls postgresql)
+        run:  sudo mv init.sql /postgresql
+      - name: read directory
+        run: ls
       - name: Build  docker-compose
         run: docker-compose up -d polar-postgres
       - name: Build, unit tests and integration tests
