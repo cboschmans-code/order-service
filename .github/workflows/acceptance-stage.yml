@@ -7,7 +7,7 @@ on:
 concurrency: acceptance
 
 env:
-  OWNER: cboschmans
+  OWNER: cboschmans-code
   REGISTRY: ghcr.io
   APP_REPO: order-service
   DEPLOY_REPO: polar-deployment
