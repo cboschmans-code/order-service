@@ -47,10 +47,10 @@ jobs:
         run:  mkdir postgresql
       - name: set ownership docker-compose
         run: sudo chown -R $(id -u):$(id -g) docker-compose.yml
-      - name: list  files with permissions
-        run: ls -l
       - name: Correct Ownership init.sql
         run: sudo chown -R $(id -u):$(id -g) init.sql
+      - name: list  files with permissions
+        run: ls -l
       - name: move script
         run:  mv init.sql /postgresql
       - name: read directory
