@@ -52,7 +52,7 @@ jobs:
       - name: list  files with permissions
         run: ls -l
       - name: move script
-        run:  mv init.sql /postgresql
+        run:  mv init.sql postgresql
       - name: read directory
         run: ls -l postgresql
       - name: Build  docker-compose
