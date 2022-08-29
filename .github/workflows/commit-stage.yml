@@ -48,7 +48,7 @@ jobs:
       - name: move script
         run:  sudo mv init.sql /postgresql
       - name: read directory
-        run: ls
+        run: ls -l postgresql
       - name: Build  docker-compose
         run: docker-compose up -d polar-postgres
       - name: Build, unit tests and integration tests
