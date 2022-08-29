@@ -43,10 +43,21 @@ jobs:
         uses: wei/curl@master
         with:
           args: https://raw.githubusercontent.com/cboschmans-code/polar-deployment/main/docker/postgresql/init.sql --output init.sql
+      - name: Get Actions user id
+        id: get_uid
+        run: |
+          actions_user_id=`id -u $USER`
+          echo $actions_user_id
+          echo ::set-output name=uid::$actions_user_id
+
+      - name: Correct Ownership in GITHUB_WORKSPACE directory
+        uses: peter-murray/reset-workspace-ownership-action@v1
+        with:
+          user_id: ${{ steps.get_uid.outputs.uid }}
       - name: make directory
         run:  mkdir postgresql
       - name: move script
-        run:  sudo mv init.sql /postgresql
+        run:  mv init.sql /postgresql
       - name: read directory
         run: ls -l postgresql
       - name: Build  docker-compose
