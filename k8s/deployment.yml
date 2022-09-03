@@ -38,7 +38,7 @@ spec:
             httpGet:
               path: /actuator/health/readiness
               port: 9002
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 15
           volumeMounts:
             - name: order-config-volume
